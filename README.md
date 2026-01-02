@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lumina — A Premium Editorial Blog Platform
 
-## Getting Started
+[![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://lumina-blog-one.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-ORM-blue?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
 
-First, run the development server:
+**Lumina** is a sophisticated, full-stack editorial platform designed for writers who demand excellence and readers who appreciate deep focus. It combines a distraction-free writing environment with a premium reading experience, featuring advanced social interactions and real-time analytics.
 
+🔗 **Live Demo:** [lumina-blog-one.vercel.app](https://lumina-blog-one.vercel.app/)
+
+---
+
+## ✨ Key Features
+
+### 🖋️ Professional Editorial Suite
+- **Tiptap-Powered Editor**: A rich text experience with floating formatting menus, inline image support, and clean typography.
+- **Intelligent Auto-save**: Background draft persistence to `localStorage` every 3 seconds—never lose a word.
+- **Story Categorization**: Organize narratives by Technology, Culture, Design, and more.
+- **Premium Toggling**: Gate exclusive content behind a "Pro" membership system.
+
+### 📊 Real-Time Analytics & Growth
+- **Writer's Studio**: A comprehensive author dashboard to monitor story performance (Views, Claps, Responses).
+- **Engagement Tracking**: Real-time view counts and clap increments for every story.
+- **Social Ecosystem**: Support for author following and personalized reading lists (Bookmarking).
+
+### 📖 Immersive Reading Experience
+- **Focus Mode**: Distraction-free reading with adjustable font sizes.
+- **Editorial Typography**: Carefully selected serif paired with modern sans-serif for maximum legibility.
+- **Trending Feed**: A sleek, numbered discovery bar highlighting the platform's top stories.
+- **Responsive Design**: Flawlessly optimized for desktop, tablet, and mobile.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework**: [Next.js 15+](https://nextjs.org/) (App Router & Server Components)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) & Modern CSS
+- **Database**: [PostgreSQL](https://www.postgresql.org/) (via [Prisma ORM](https://www.prisma.io/))
+- **Authentication**: [NextAuth.js](https://next-auth.js.org/) (JWT & Credentials)
+- **Editor**: [Tiptap v3](https://tiptap.dev/) (with Floating UI)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Email**: [Resend](https://resend.com/)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 20+
+- A PostgreSQL database (Neon, Supabase, or local)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Harshalloke/Lumina-Blog.git
+   cd Lumina-Blog
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+   Create a `.env` file in the root directory:
+   ```env
+   DATABASE_URL="your-postgresql-url"
+   NEXTAUTH_SECRET="your-secret-string"
+   NEXTAUTH_URL="http://localhost:3000"
+   RESEND_API_KEY="your-resend-key"
+   ```
+
+4. **Initialize the database:**
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+
+5. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🏗️ Building for Production
+
+To create an optimized production build:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📄 License
+Distributed under the MIT License. See `LICENSE` for more information.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🤝 Contact
+Harshalloke - [@your_twitter](https://twitter.com/your_twitter)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Project Link: [https://github.com/Harshalloke/Lumina-Blog](https://github.com/Harshalloke/Lumina-Blog)
