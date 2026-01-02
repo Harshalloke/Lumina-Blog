@@ -1,0 +1,92 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  name          String
+  email         String   @unique
+  password      String
+  image         String?
+  bio           String?
+  plan          String   @default("FREE") // FREE or PRO
+  isVerified    Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  posts         Post[]
+  comments      Comment[]
+  bookmarks     Bookmark[]
+  
+  // Follow system
+  followers     Follow[] @relation("following")
+  following     Follow[] @relation("follower")
+}
+
+model Follow {
+  id          String   @id @default(cuid())
+  followerId  String
+  follower    User     @relation("follower", fields: [followerId], references: [id])
+  followingId String
+  following   User     @relation("following", fields: [followingId], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@unique([followerId, followingId])
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String   @db.Text
+  category    String   @default("Stories")
+  coverImage  String?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(false)
+  isPremium   Boolean  @default(false)
+  claps       Int      @default(0)
+  views       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id])
+  comments    Comment[]
+  bookmarks   Bookmark[]
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+}
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, postId])
+}
+
+model Newsletter {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
